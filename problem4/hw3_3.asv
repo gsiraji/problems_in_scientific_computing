@@ -1,0 +1,28 @@
+n = 1000;
+lambda = ones(n,1);
+f_app = ones(n,1);
+f_exact = ones(n,1);
+%f0 = 0.5*ones(n,1);
+lambdas = linspace(1,20,n);
+
+for i = 1:n
+    f_app(i,1) = sqrt(pi)/(3*sqrt(lambdas(i))) ;
+    fun = @(x) exp(-lambdas(i).*x.^6).*(1.+x.^2);
+    f_exact(i,1) = integral(fun,-1,2);
+end
+f_exact;
+plot1 = scatter(lambdas, (f_app-f_exact)./f_exact,'LineWidth',2);
+%hold on;
+%plot(lambdas, f_exact,'--','LineWidth',2);
+
+
+%,epsilons, f2-thalf,':',epsilons, f3-thalf,'.-'
+%,epsilons, thalf,':'
+%feval(matlabFunction(9/20 - lambertw(0, -20*exp(log(-(19*exp(19))/20) - 20*x))/20),0.5374);
+%fzero(matlabFunction(9/20 - lambertw(0, -20*exp(log(-(19*exp(19))/20) - 20*x))/20),0.53)
+
+%ezplot(x+epsilon*log(1-x),[0.1,1]); linspace(0.01,0.05,n)
+%hold on;
+%ezplot(x+epsilon*log(1-x)-(epsilon^2)*(log(1-x)+x)/(1-x),[0.1,1,0,1]);
+%hold on;
+%ezplot(x,[0.1,1,0,1]);
